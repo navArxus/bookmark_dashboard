@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import {getFirestore} from '@firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB1AVCIJ4M7-Str4w59a52GwxeP3GH2LbI",
-  authDomain: "bookmark-dashboard-83f3b.firebaseapp.com",
-  projectId: "bookmark-dashboard-83f3b",
-  storageBucket: "bookmark-dashboard-83f3b.appspot.com",
-  messagingSenderId: "320907339707",
-  appId: "1:320907339707:web:48cb8b20d724bd4458469e"
+  apiKey: "AIzaSyD6HcnSEEdg-PNM02ckBmsPLCEwXEmHIwc",
+  authDomain: "bookmark-dashboardtry.firebaseapp.com",
+  projectId: "bookmark-dashboardtry",
+  storageBucket: "bookmark-dashboardtry.appspot.com",
+  messagingSenderId: "424060451488",
+  appId: "1:424060451488:web:6d418ca661e76a3b6427c5"
 };
 
 // Initialize Firebase

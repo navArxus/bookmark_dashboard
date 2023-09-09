@@ -4,10 +4,12 @@ import arcuslogo from "../../assets/ArcusLogo.png"
 import { AiOutlineSetting } from "react-icons/ai";
 import DropDownsetting from "./settingbar";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { collection, getDocs ,addDoc} from 'firebase/firestore'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 import { db } from '../../firebase-config'
 import Addinput from "./addinput"
 import Addoption from "./addoption"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -15,17 +17,25 @@ const Navigation = (props) => {
     const [settingmenu, setsettingmenu] = useState(false)
     const [catogries, setcatogries] = useState([])
     const [isaddinput, setisaddinput] = useState(false)
+    const [changingdata, setchangingdata] = useState(false)
 
     // Adding a ref to category collection
-    const catogorycollectionRef = collection(db, "catogory")
+
+
     useEffect(() => {
+        // console.log("useEffect in action")
+        const catogorycollectionRef = collection(db, "catogory")
         const getcatogoryData = async () => {
-            const catogoryData = await getDocs(catogorycollectionRef);
-            // console.log(catogoryData.docs.map((doc) => ({...doc.data() , id:doc.id})))
-            setcatogries(catogoryData.docs.map((doc) => (doc.data().name)))
+            try {
+                const catogoryData = await getDocs(catogorycollectionRef);
+                setcatogries(catogoryData.docs.map((doc) => (doc.data().name)))
+            } catch (error) {
+                // alert("Error occured unable to fetch data 1 \n Message : " + error)
+            }
         }
         getcatogoryData()
-    }, [catogorycollectionRef])
+    }, [changingdata])
+
 
     const settingdropdownandler = () => {
         setsettingmenu(!settingmenu)
@@ -34,19 +44,29 @@ const Navigation = (props) => {
         console.log(val)
     }
 
-    const addinputToogle = () =>{
+    const addinputToogle = () => {
         setisaddinput(!isaddinput)
     }
-    const newcatdataHandler = async (val) =>{
-        addDoc(catogorycollectionRef,{name:val,visited:0})
-        setisaddinput(false)
-        const getcatogoryData = async () => {
-            const catogoryData = await getDocs(catogorycollectionRef);
-            // console.log(catogoryData.docs.map((doc) => ({...doc.data() , id:doc.id})))
-            setcatogries(catogoryData.docs.map((doc) => (doc.data().name)))
+    const newcatdataHandler = async (val) => {
+        const catogorycollectionRef = collection(db, "catogory")
+        try {
+            addDoc(catogorycollectionRef, { name: val, visited: 0 })
+            toast.success('Category added successfuly ', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+            // console.log("completed")
+        } catch (error) {
+            // console.log("uncompleted")
+            alert("Error occured unable to post data 2\n Message : " + error)
         }
-        getcatogoryData()
-
+        setchangingdata(!changingdata)
     }
 
     return (
@@ -79,10 +99,12 @@ const Navigation = (props) => {
                 </div>
                 <div className={styles.line}></div>
                 <div className={`${styles.addcategories} `} >
-                    {isaddinput ? <Addinput chnageaddinputhandler={addinputToogle}  newcatdata={newcatdataHandler} /> : <Addoption chnageaddinputhandler={addinputToogle}/>}
+                    {isaddinput ? <Addinput chnageaddinputhandler={addinputToogle} newcatdata={newcatdataHandler} /> : <Addoption chnageaddinputhandler={addinputToogle} />}
                 </div>
 
             </div>
+            {/* Toast for success */}
+            <ToastContainer />
             <div className={styles.lowersection}>
                 <div className={styles.dismiss_msg}>
                     <div className={styles.dismiss_msg_text}>
