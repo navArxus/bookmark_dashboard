@@ -120,7 +120,7 @@ small {
     cursor: pointer;
     border-bottom: 1px solid #051e34;
 }
-.catogrieseach:hover ,.addcategories:hover{
+.catogrieseach:hover {
     background-color: rgba(232, 230, 230, 0.205);
 }
 

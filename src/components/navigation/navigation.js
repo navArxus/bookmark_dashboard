@@ -1,19 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './navigation.module.css'
 import arcuslogo from "../../assets/ArcusLogo.png"
 import { AiOutlineSetting } from "react-icons/ai";
 import DropDownsetting from "./settingbar";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import { collection, getDocs ,addDoc} from 'firebase/firestore'
+import { db } from '../../firebase-config'
+import Addinput from "./addinput"
+import Addoption from "./addoption"
+
+
 
 const Navigation = (props) => {
     const [settingmenu, setsettingmenu] = useState(false)
-    const catogries = ['Entariment', 'Games', 'Programming', 'Styles', "Communication","office","anime","op sites"]
+    const [catogries, setcatogries] = useState([])
+    const [isaddinput, setisaddinput] = useState(false)
+
+    // Adding a ref to category collection
+    const catogorycollectionRef = collection(db, "catogory")
+    useEffect(() => {
+        const getcatogoryData = async () => {
+            const catogoryData = await getDocs(catogorycollectionRef);
+            // console.log(catogoryData.docs.map((doc) => ({...doc.data() , id:doc.id})))
+            setcatogries(catogoryData.docs.map((doc) => (doc.data().name)))
+        }
+        getcatogoryData()
+    }, [catogorycollectionRef])
+
     const settingdropdownandler = () => {
         setsettingmenu(!settingmenu)
     }
     const catchangeHandler = (val) => {
-        // hellooo
+        console.log(val)
+    }
+
+    const addinputToogle = () =>{
+        setisaddinput(!isaddinput)
+    }
+    const newcatdataHandler = async (val) =>{
+        addDoc(catogorycollectionRef,{name:val,visited:0})
+        setisaddinput(false)
+        const getcatogoryData = async () => {
+            const catogoryData = await getDocs(catogorycollectionRef);
+            // console.log(catogoryData.docs.map((doc) => ({...doc.data() , id:doc.id})))
+            setcatogries(catogoryData.docs.map((doc) => (doc.data().name)))
+        }
+        getcatogoryData()
+
     }
 
     return (
@@ -38,8 +71,7 @@ const Navigation = (props) => {
                 <div className={styles.catogries}>
                     {catogries.map((cat) => {
                         return (
-                            <div className={styles.catogrieseach} onClick={catchangeHandler.bind(null, cat)}>
-                                {console.log(cat)}
+                            <div className={styles.catogrieseach} onClick={catchangeHandler.bind(null, cat)} key={Math.random()}>
                                 <p>{cat}</p> <MdOutlineKeyboardArrowRight size='20px' />
                             </div>
                         )
@@ -47,11 +79,9 @@ const Navigation = (props) => {
                 </div>
                 <div className={styles.line}></div>
                 <div className={`${styles.addcategories} `} >
-                    <span>
-                        <AiOutlinePlusCircle size="20px" />
-                    </span>
-                    <p>Add catogrory</p>
+                    {isaddinput ? <Addinput chnageaddinputhandler={addinputToogle}  newcatdata={newcatdataHandler} /> : <Addoption chnageaddinputhandler={addinputToogle}/>}
                 </div>
+
             </div>
             <div className={styles.lowersection}>
                 <div className={styles.dismiss_msg}>
