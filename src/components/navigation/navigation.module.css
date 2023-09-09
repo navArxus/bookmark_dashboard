@@ -1,0 +1,181 @@
+section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 20vw;
+    height: 100vh;
+    position: absolute;
+    
+}
+.uppersection {
+    height: 70%;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.logo {
+    position: sticky;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    border-bottom: 0.2px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    border-bottom: 0.2px solid rgba(255, 255, 255, 0.25);
+    padding: 0px 10px 0px 20px;
+}
+
+.home:hover {
+    color: white;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.092);
+}
+
+.setting {
+    border-left: 0.5px solid rgba(255, 255, 255, 0.25);
+    height: 60%;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    position: relative;
+}
+
+.forrotate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s linear;
+    width: 100%;
+    aspect-ratio: 1/1;
+
+}
+
+.forrotate:hover {
+    transform: rotate(60deg);
+    background-color: rgba(255, 255, 255, 0.508);
+    border-radius: 100px;
+}
+
+.DropDownsetting {
+    position: absolute;
+    top: 0px;
+    left: 60px;
+}
+
+.catogries {
+    width: 90%;
+    background-color: rgba(232, 230, 230, 0.058);
+    margin: auto;
+    border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 42% ;
+    padding: 0%;
+}
+.catogries::-webkit-scrollbar {
+    width: 2px;
+}
+.catogries::-webkit-scrollbar-thumb {
+    border: 0px solid black;
+    width: 2px;
+    border-radius: 20px;
+    background-color: grey;
+}
+
+
+small {
+    display: block;
+    margin: 15px 20px;
+    height: 20px;
+}
+
+.catogrieseach {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    margin: 0%;
+    height: 25px;
+    z-index: -9;
+    overflow: hidden;
+    border: inherit;
+    cursor: pointer;
+    border-bottom: 1px solid #051e34;
+}
+.catogrieseach:hover ,.addcategories:hover{
+    background-color: rgba(232, 230, 230, 0.205);
+}
+
+.addcategories {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 90%;
+    background-color: rgba(232, 230, 230, 0.058);
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.addcategories span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.dismiss_msg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    font-size: 15px;
+    white-space: 2px;
+    margin: auto;
+    margin: 10px 20px;
+}
+.dismiss_msg_text {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+.dismiss_msg_text small {
+    height: fit-content;
+    margin: 0%;
+}
+.dismiss_msg_text small:nth-child(1){
+    margin-bottom:4px ;
+}
+.dismiss_msg_text a {
+    color: #5d90e2;
+    text-decoration: none;
+}
+footer {
+    padding: 5px 20px;
+    border-top: 1px solid rgba(128, 128, 128, 0.511);
+    text-align: center;
+    background-color: rgba(232, 230, 230, 0.058);
+}
+footer small {
+    margin: 0px;
+}
