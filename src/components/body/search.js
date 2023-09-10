@@ -9,7 +9,16 @@ const Search = () => {
                 <input type="text" placeholder="Search bookmarks..." /><button> <AiOutlineSearch size={"20px"} /> </button>
             </div>
             <div className={styles.staticbody_search_result}>
-                hello world
+                <div className={styles.nestedstaticbody_result}>
+                    <p>h</p>
+                    <p>h</p>
+                    <p>h</p>
+                    <p>h</p>
+                    <p>h</p>
+                    <p>h</p>
+                    <p>h</p>
+                    <p>h</p>
+                </div>
             </div>
         </div>
     )

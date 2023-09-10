@@ -1,6 +1,10 @@
 .parent {
     width: 100%;
-    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: fit-content;
 }
 .staticbody_bottom {
     width: 80%;
@@ -29,10 +33,21 @@
 
 
 .staticbody_search_result {
-    /* position: relative;
-    top: 40px;
+    position: absolute;
+    top: 86px;
     left: 50%;
-    width: 100%;
+    transform: translateX(-50%);
+    width: 80%;
     height: fit-content;
-    background-color: blue; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.nestedstaticbody_result {
+    background-color: blue;
+    width: 80%;
+    border-radius: 20px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
 }
