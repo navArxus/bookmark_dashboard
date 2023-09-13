@@ -3,9 +3,6 @@ import styles from "./mainbody.module.css"
 import Search from "./search";
 
 const Body = () => {
-    const search = document.getElementById("sear")
-    // search.style.backgroundColor = "black"
-    console.log(search)
     return (
         <div className={styles.body}>
             <div className={styles.staticbody}>
@@ -18,7 +15,9 @@ const Body = () => {
                 </div>
                 <Search/>
             </div>
-            <div className={styles.dynamicbody}></div>
+            <div className={styles.dynamicbody}>
+                
+            </div>
         </div>
     )
 }

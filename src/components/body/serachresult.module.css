@@ -1,0 +1,20 @@
+.search_resultChildren {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.354);
+    padding: 0px 10px;
+}
+.search_resultChildren button {
+    background-color: transparent;
+    width: 60px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.search_resultChildren:hover {
+    background-color: aliceblue;
+    
+}
