@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./mainbody.module.css"
 import Search from "./search";
+import CatogoryShow from "./catogoryshow"
 
 const Body = () => {
     return (
@@ -16,7 +17,7 @@ const Body = () => {
                 <Search/>
             </div>
             <div className={styles.dynamicbody}>
-                
+                <CatogoryShow/>
             </div>
         </div>
     )
