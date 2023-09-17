@@ -4,9 +4,15 @@
   justify-content: space-between;
   color: #bcc2c9;
   overflow-x: hidden;
+  z-index: 1;
+  position: relative;
 }
 .navigator {
   width: 20vw;
   height: 100vh;
   background-color: #051e34;
+}
+.mainbody {
+  z-index: 2;
+  position: relative;
 }

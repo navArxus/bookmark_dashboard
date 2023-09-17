@@ -4,7 +4,6 @@ import { AiOutlineDelete , AiOutlineEdit , AiOutlineInfoCircle } from "react-ico
 
 const dynamicbody = () => {
     return (
-        <React.Fragment>
             <div className={styles.dynamic_container}  >
                 <div className={styles.controls}>
                     <span><AiOutlineDelete/></span>
@@ -24,7 +23,6 @@ const dynamicbody = () => {
             </div>
 
 
-        </React.Fragment>
     )
 }
 
