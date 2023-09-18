@@ -6,7 +6,7 @@
     color: black;
     position: relative;
     border-radius: 15px;
-    transition: 1s ease-in-out ;
+    transition: 0.4s ease-in-out ;
     z-index: 12;
 }
 .controls {
@@ -37,10 +37,40 @@
     padding: 0px 10px;
 }
 .dynamic_container:hover .dynamic_container_content {
-    height: 40%;
+    height: 30%;
 }
-.dynamic_container_text h2 ,.dynamic_container_text p {
+.dynamic_container_text h4 ,.dynamic_container_text p {
     margin: 0%;
     padding: 0%;
 } 
-/* .dynamic_container */
+.dynamic_container_text p {
+    font-size: small;
+}
+.bordergreen {
+    border-color: rgba(0, 128, 0, 0.335);
+    background-color: rgba(0, 128, 0, 0.181);
+}
+.dynamic_container_content  button{
+    cursor: pointer;
+    width: fit-content ;
+    padding: 5px 10px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 14px;
+    height: 30px;
+    border:none ;
+    border-radius: 8px;
+    transition: 0.4s ease-in-out;
+}
+.dynamic_container_content  button span{
+    padding: 1px 0px 0px 6px  ;
+    display: none;
+}
+.dynamic_container_content  button i{
+    margin: 0px ;
+    padding: 0px ;
+}
+.dynamic_container_content button:hover .icon {
+    display: flex;
+}

@@ -1,16 +1,32 @@
-import React, { useState } from "react"
+import React, { useState ,useEffect} from "react"
 import styles from "./search.module.css"
 import { AiOutlineSearch } from "react-icons/ai";
 import SearchResult from "./searchresult";
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../../firebase-config'
 
 const Search = () => {
     const [userinput,setuserinput] = useState("")
+    const [bookmark, setBookmarks] = useState([])
     const [filtereddata,setfiltereddata] = useState([])
+
+    useEffect(() => {
+        const bookmarkcollectionRef = collection(db, "bookmarks")
+        const getbookmarksData = async () => {
+            try {
+                const bookmarksdata = await getDocs(bookmarkcollectionRef)
+                const data = bookmarksdata.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+                console.log(data)
+                setBookmarks(data)
+            } catch (error) {
+            }
+        }
+        getbookmarksData()
+    }, [])
     
     const fetchdata = (value) => {
-        const defaultValue = ["entariment", "entar", "office", "games", "programming"];
-        const results = defaultValue.filter((val) => {
-            return (val.toLowerCase().includes(value.toLowerCase()))
+        const results = bookmark.filter((val) => {
+            return (val.name.toLowerCase().includes(value.toLowerCase()))
         })
         setfiltereddata(results)
     }

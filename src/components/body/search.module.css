@@ -55,3 +55,8 @@
     padding-right: 7.5px; */
     overflow: hidden;
 }
+.search_resultChildren p  {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}

@@ -2,6 +2,7 @@
     z-index: 100;
     position: relative;
 }
+
 .search_resultChildren {
     display: flex;
     align-items: center;
@@ -11,6 +12,7 @@
     z-index: 100;
     position: relative;
 }
+
 .search_resultChildren button {
     background-color: transparent;
     width: 60px;
@@ -20,7 +22,19 @@
     border: none;
     cursor: pointer;
 }
+
 .search_resultChildren:hover {
     background-color: aliceblue;
-    
+}
+
+.search_resultChildren p {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.search_resultChildren p small {
+    font-size: 12px;
+    margin: 0px 0px !important;
+    height: 12px;
 }
