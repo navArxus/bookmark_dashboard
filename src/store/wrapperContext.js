@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Ctxprovider from "./context-config"
 
-const wrapper = (props) => {
+const Wrapper = (props) => {
+
+    const [showModal,setshowModal] = useState(false)
+    const modalToggler = () => {
+        setshowModal(!showModal)
+    }
     let defaultValue = {
         selectedCatogory: "",
-        setSelectedCatogory: () => { }
+        setSelectedCatogory: () => { },
+        isModal: showModal,
+        setisModal: modalToggler
     }
     return (
         <Ctxprovider.Provider value={defaultValue}>
@@ -12,4 +19,4 @@ const wrapper = (props) => {
         </Ctxprovider.Provider>
     )
 }
-export default wrapper
+export default Wrapper

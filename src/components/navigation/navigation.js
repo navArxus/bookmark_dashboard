@@ -109,7 +109,7 @@ const Navigation = (props) => {
                 <div className={styles.dismiss_msg}>
                     <div className={styles.dismiss_msg_text}>
                         <small>Note :</small>
-                        <small>Get up to date with our docs and Blog <br /> <a href="/">Go to site</a> </small>
+                        <small>Get up to date with our docs and Blog &nbsp; <a href="/">Go to site</a> </small>
                     </div>
                 </div>
                 <footer>
