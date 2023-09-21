@@ -4,12 +4,16 @@ import Ctxprovider from "./context-config"
 const Wrapper = (props) => {
 
     const [showModal,setshowModal] = useState(false)
+    const [selcatogory,setselcatogory] = useState("")
     const modalToggler = () => {
         setshowModal(!showModal)
     }
+    const TsetSelectedCatogory = (val) => {
+        setselcatogory(val)
+    }
     let defaultValue = {
-        selectedCatogory: "",
-        setSelectedCatogory: () => { },
+        selectedCatogory: selcatogory,
+        setSelectedCatogory: TsetSelectedCatogory,
         isModal: showModal,
         setisModal: modalToggler
     }

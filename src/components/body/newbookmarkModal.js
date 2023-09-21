@@ -40,6 +40,8 @@ const Overlay = (props) => {
     const databseinsertdata = () => {
         const catogoryrefcollection = collection(db, "bookmarks")
         addDoc(catogoryrefcollection,newbookmarkobj)
+        reqCtx.setisModal();
+        window.location.reload()
     }
 
 

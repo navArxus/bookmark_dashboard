@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from './navigation.module.css'
 import arcuslogo from "../../assets/ArcusLogo.png"
 import { AiOutlineSetting } from "react-icons/ai";
@@ -10,6 +10,7 @@ import Addinput from "./addinput"
 import Addoption from "./addoption"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ctx from "../../store/context-config"
 
 
 
@@ -19,6 +20,7 @@ const Navigation = (props) => {
     const [isaddinput, setisaddinput] = useState(false)
     const [changingdata, setchangingdata] = useState(false)
 
+    const catctx = useContext(ctx)
     // Adding a ref to category collection
 
 
@@ -41,8 +43,9 @@ const Navigation = (props) => {
         setsettingmenu(!settingmenu)
     }
     const catchangeHandler = (val) => {
-        console.log(val)
-    }
+        catctx.setSelectedCatogory(val)
+
+    }  
 
     const addinputToogle = () => {
         setisaddinput(!isaddinput)

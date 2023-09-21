@@ -16,7 +16,6 @@ const Search = () => {
             try {
                 const bookmarksdata = await getDocs(bookmarkcollectionRef)
                 const data = bookmarksdata.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-                console.log(data)
                 setBookmarks(data)
             } catch (error) {
             }

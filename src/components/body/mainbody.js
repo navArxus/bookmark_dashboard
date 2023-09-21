@@ -6,11 +6,12 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase-config'
 import Modal from "./newbookmarkModal"
 import ctx from "../../store/context-config"
+import Nodatafound from "./nodatafound";
 
 
 const Body = () => {
     const [bookmark, setBookmarks] = useState([])
-    const [showModal,setshowModal] = useState(false)
+    const [showModal, setshowModal] = useState(false)
     const reqCtx = useContext(ctx)
     useEffect(() => {
         const bookmarkcollectionRef = collection(db, "bookmarks")
@@ -18,21 +19,29 @@ const Body = () => {
             try {
                 const bookmarksdata = await getDocs(bookmarkcollectionRef)
                 const data = bookmarksdata.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-                console.log(data)
-                setBookmarks(data)
+                if (reqCtx.selectedCatogory === "") {
+                    // console.log("NO catogory selected")
+                    setBookmarks(data)
+                } else {
+                    // console.log("one catogory Selected") 
+                    const filterData = data.filter((val) => {
+                        return val.catogory === reqCtx.selectedCatogory;
+                    })
+                    setBookmarks(filterData)
+                }
             } catch (error) {
             }
         }
         getbookmarksData()
-    }, [])
-    
+    }, [reqCtx])
+
     const modalToggler = () => {
         setshowModal(!showModal)
-    }  
-    
+    }
+
     return (
         <div className={styles.body}>
-            {reqCtx.isModal && <Modal toogler={modalToggler}/>}
+            {reqCtx.isModal && <Modal toogler={modalToggler} />}
             <div className={styles.staticbody}>
                 <div className={styles.staticbody_top}>
                     <div className={styles.staticbody_top_text}>
@@ -44,13 +53,10 @@ const Body = () => {
                 <Search />
             </div>
             <div className={styles.dynamicbody}>
+                {bookmark.length === 0 && <Nodatafound/>}
                 {bookmark.map((value) => {
                     return (
-                        <CatogoryShow
-                            name={value.name}
-                            key={value.id}
-                            description={value.description}
-                            link={value.link} />
+                        <CatogoryShow name={value.name} key={value.id} description={value.description} link={value.link} />
                     )
 
                 })}
